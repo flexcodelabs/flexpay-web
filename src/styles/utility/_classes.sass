@@ -1,0 +1,341 @@
+@use "../colors" as *
+@use "../type-scale" as *
+@use "../abstracts/sizes" as *
+@use "../functions/functions" as functions
+
+$alignments: ("center", "space-between", "space-around", "space-evenly", "flex-start", "flex-end")
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    scroll-behavior: smooth
+    // outline: 1px solid red
+
+body, html
+    // TODO Edit font
+    // font-family: BarlowRegular
+    scroll-behavior: smooth
+    min-height: 100vh
+    width: 100vw
+    overflow-x: hidden
+    overflow-y: scroll
+    background: #F1F5F9
+    &.no-scrolling
+        height: 100vh
+        overflow: hidden
+    #root
+        height: 100%
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+::selection
+    background: #c1c4f0
+    color: var(--clr-neutral-900)
+
+@each $color, $shades in $colors
+    @each $shade, $value in $shades
+        .text-#{$color}-#{$shade}
+            color: $value
+        .bg-#{$color}-#{$shade}
+            background-color: $value
+        .border-#{$color}-#{$shade}
+            border: 1px solid $value
+
+@each $screen-size, $font-size in $type-scale
+    @each $size, $value in $font-size
+        .text-#{$screen-size}-#{$size}
+            font-size: $value
+
+@each $size, $value in $sizes
+    .gap-#{$size}
+        gap: $value
+    .row-gap-#{$size}
+        row-gap: $value
+    .col-gap-#{$size}
+        column-gap: $value
+
+@each $size, $value in $sizes
+    .flex-#{$size}
+        flex: $value
+    .m-#{$size}
+        margin: $value
+    .mt-#{$size}
+        margin-top: $value
+    .mb-#{$size}
+        margin-bottom: $value
+    .ml-#{$size}
+        margin-left: $value
+    .mr-#{$size}
+        margin-right: $value
+    .my-#{$size}
+        margin-top: $value
+        margin-bottom: $value
+    .mx-#{$size}
+        margin-left: $value
+        margin-right: $value
+    .p-#{$size}
+        padding: $value
+    .pt-#{$size}
+        padding-top: $value
+    .pb-#{$size}
+        padding-bottom: $value
+    .pl-#{$size}
+        padding-left: $value
+    .pr-#{$size}
+        padding-right: $value
+    .py-#{$size}
+        padding-top: $value
+        padding-bottom: $value
+    .px-#{$size}
+        padding-left: $value
+        padding-right: $value
+    .br-#{$size}
+        border-radius: $value
+    .btlr-#{$size}
+        border-top-left-radius: $value
+    .btrr-#{$size}
+        border-top-right-radius: $value
+    .bblr-#{$size}
+        border-bottom-left-radius: $value
+    .bbrr-#{$size}
+        border-bottom-right-radius: $value
+    .top-#{$size}
+        top: $value
+    .bottom-#{$size}
+        bottom: $value
+    .left-#{$size}
+        left: $value
+    .right-#{$size}
+        right: $value
+
+.width-100
+    width: 100%
+
+.left-align
+    text-align: left
+
+.right-align
+    text-align: right
+
+.text-upper-case
+    text-transform: uppercase
+
+.text-lower-case
+    text-transform: lowercase
+
+.text-capitalize
+    text-transform: capitalize
+
+.p-a
+    position: absolute
+
+.p-r
+    position: relative
+
+.p-f
+    position: fixed
+
+.p-s
+    position: sticky
+
+.flex
+    display: flex
+
+@each $align in $alignments
+    .justify-#{$align}
+        justify-content: #{$align}
+
+    .items-#{$align}
+        align-items: #{$align}
+
+    .justify-items-#{$align}
+        justify-items: #{$align}
+
+    .content-#{$align}
+        align-content: #{$align}
+
+.flex-center
+    @include functions.flexCenter
+
+.flex-wide
+    @include functions.flexWide
+
+.flex-end
+    @include functions.flexEnd
+
+.flex-start
+    @include functions.flexStart
+
+.flex-around
+    @include functions.flexAround
+
+.flex-even
+    @include functions.flexEvenly
+
+.flex-column
+    flex-direction: column
+
+.flex-row
+    flex-direction: row
+
+.align-start
+    align-items: flex-start
+
+.align-end
+    align-items: flex-end
+
+.align-center
+    align-items: center
+
+.flex-wrap
+    flex-wrap: wrap
+
+a:hover, .link:hover
+    opacity: .8
+
+.cursor-pointer
+    cursor: pointer
+
+.text-center
+    text-align: center
+
+.text-left
+    text-align: left
+
+.text-right
+    text-align: right
+
+.text-bold
+    font-weight: bold
+
+.shadow-sm
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05)
+
+.shadow-regular
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)
+
+.shadow-md
+    box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06)
+
+.shadow-lg
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)
+.shadow-xl
+    box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04)
+
+.shadow-xxl
+    box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25)
+
+.shadow-inner
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.06)
+
+.container
+    width: 90%
+    height: 100%
+    margin: 0 auto
+    max-width: 1600px
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+.css-1s2u09g-control:focus
+    border: 1px solid green
+    -webkit-text-fill-color: inherit
+    -webkit-box-shadow: none
+    box-shadow: none
+    transition: background-color 5000s ease-in-out 0s
+
+input[type=number]::-webkit-inner-spin-button
+    -webkit-appearance: none
+    opacity: 0
+
+.scroll-bar, .select__menu-list
+    &::-webkit-scrollbar
+        width: .3rem
+    &::-webkit-scrollbar-track
+        background: var(--clr-dark-500)
+    &::-webkit-scrollbar-thumb
+        background: var(--clr-secondary-500)
+        border-radius: 0.5em
+
+.no-scroll-bar
+    &::-webkit-scrollbar
+        width: 0
+    &::-webkit-scrollbar-track
+        background: transparent
+    &::-webkit-scrollbar-thumb
+        background: transparent
+        border-radius: 0
+
+.backdrop
+    position: absolute
+    background: rgba(0, 0, 0, .6)
+    height: 100%
+    width: 100%
+
+.btn
+    padding: .7rem 2rem
+    position: relative
+    overflow: hidden
+    cursor: pointer
+    transition: .3s linear
+    @include functions.flexCenter
+    &.btn-secondary
+        border-width: 2px
+        padding: calc( .7rem - 2px ) calc( 2rem - 2px )
+        &:hover
+            background: var(--clr-primary-700)
+
+.field-group
+    width: 100%
+    .input-group
+        position: relative
+        width: 100%
+        label
+            transition: all .3s linear
+        input, textarea
+            resize: none
+            background-color: transparent
+            width: 100%
+            border: 1px solid var(--clr-neutral-400)
+            color: var(--clr-neutral-900)
+            transition: .25s
+            &:focus, &:hover
+                border-color: var(--clr-neutral-700)
+            &.error
+                border-color: var(--clr-danger-500)
+            &.success
+                border-color: var(--clr-success-500)
+            &:disabled
+                border-color: #4a535b
+                color: #4a535b
+        textarea
+            min-height: 100px
+            font-family: BarlowRegular
+        .toggle-password
+            height: 100%
+            button
+                cursor: pointer
+                height: 100%
+                width: 50px
+
+.ellipsed-text
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+.fade-in
+    animation: fadeIn .6s
+
+@keyframes fadeIn
+    0%
+        opacity: 0
+    100%
+        opacity: 1
