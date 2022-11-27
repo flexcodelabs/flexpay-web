@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import './styles/main.sass'
 
 const router = createBrowserRouter([
   {
